@@ -16,7 +16,7 @@ on our challenge website: https://clubcryptology.wixsite.com/greatcipherchalleng
 If you encounter any issues, please email clubcryptology@gmail.com or text
 650-468-8850
 
-Programs written by Arush Chhatrapati
+Programs written by Arush Chhatrapati 
 Copyright 2020 the Gunn Cryptology Club
 
 Link to Challenge Website: tinyurl.com/greatcipherchallenge
