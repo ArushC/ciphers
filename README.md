@@ -17,7 +17,8 @@ Programs written by Arush Chhatrapati
 
 Copyright 2020 the Gunn Cryptology Club
 
-Link to Challenge Website: tinyurl.com/greatcipherchallenge
+Link to Challenge Website: http://greatcipherchallenge.org/
+
 Link to Cryptology Club Website: tinyurl.com/gunncryptologyclub
 
 
