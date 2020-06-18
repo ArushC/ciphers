@@ -19,7 +19,7 @@ Copyright 2020 the Gunn Cryptology Club
 
 Link to Challenge Website: http://greatcipherchallenge.org/
 
-Link to Cryptology Club Website: tinyurl.com/gunncryptologyclub
+Link to Cryptology Club Website: https://sites.google.com/view/gunn-cryptology-club
 
 
 
