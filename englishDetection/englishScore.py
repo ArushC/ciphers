@@ -4,7 +4,6 @@ import re
 import os.path
 
 MY_PATH = os.path.abspath(os.path.dirname(__file__))
-#path =
 
 MIN_WORD_LENGTH = 3
 COMMON_WORDS = os.path.join(MY_PATH, '../englishDetection/commonEnglishWords.txt')
@@ -29,7 +28,3 @@ def english_word_score(msg : str, filename=COMMON_WORDS, min_word_length=MIN_WOR
 #higher score is better
 def english_word_and_frequencies_score(msg : str, filename=COMMON_WORDS, min_word_length=MIN_WORD_LENGTH):
     return english_word_score(msg, filename, min_word_length)/calculate_chi_squared(msg)
-
-
-print(english_word_score("HELLOTHERE"))
-
