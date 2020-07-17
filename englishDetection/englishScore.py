@@ -8,6 +8,7 @@ MY_PATH = os.path.abspath(os.path.dirname(__file__))
 MIN_WORD_LENGTH = 3
 COMMON_WORDS = os.path.join(MY_PATH, '../englishDetection/commonEnglishWords.txt')
 FULL_DICTIONARY = os.path.join(MY_PATH, '../englishDetection/dictionary.txt')
+#Note that WORD_LOOKUP is just an unnecessarily large version of the full dictionary (contains almost every word in English)
 WORD_LOOKUP = os.path.join(MY_PATH, '../englishDetection/wordLookup.txt')
 
 #use this scoring method for transposition ciphers
