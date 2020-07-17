@@ -6,7 +6,7 @@ More tools to be added once the competition ends: http://greatcipherchallenge.or
 These Python programs are all made to help you solve the competition challenges. Feel free to use any of them, but MAKE SURE that you place the programs in the right directories. All of the programs import from each other. Each program can be run individually.  
 
 -See a screencast tutorial on how to setup Python on your computer under Tutorials
-on our challenge website: https://clubcryptology.wixsite.com/greatcipherchallenge/tutorials
+on our challenge website: http://greatcipherchallenge.org/tutorials
 
 -It is recommended that you use an IDE like Pycharm or IDLE
 
