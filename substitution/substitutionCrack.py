@@ -4,18 +4,13 @@ from substitution.manualSubDecoder import color
 from substitution import substitutionCipher
 from englishDetection import ngramScore
 from miscellaneous import pyperclip
-
 import re
-from polyalphabetic.manualVigenereDecoder import convert_to_rows_message
 
 #decrypts a ciphertext by using a simulated annealing algorithm
-def decrypt(ciphertext, initial_alphabet=None, failures=10000, num_of_decryptions=10):
+def decrypt(ciphertext, initial_alphabet=None, failures=10000, num_of_decryptions=10, fitness_file = ngramScore.QUADGRAMS):
 
     scores_list = []
-    fitness = ngramScore.ngram_score(ngramScore.QUADGRAMS) #this scoring method can be changed
-    fitness2 = ngramScore.ngram_score(ngramScore.TRIGRAMS)
-    fitness3 = ngramScore.ngram_score(ngramScore.BIGRAMS)
-    #fitness4 = ngramScore.ngram_score(ngramScore.MONOGRAMS)
+    fitness = ngramScore.ngram_score(fitness_file)
 
     #generate two random indexes
     #max num of allowed failures (new score not greater than old)
@@ -23,7 +18,7 @@ def decrypt(ciphertext, initial_alphabet=None, failures=10000, num_of_decryption
     best_alph = substitutionCipher.generate_random_alphabet() if not initial_alphabet else initial_alphabet
     #initial "best" is decryption with the initial permutation
     best_plaintext = substitutionCipher.decrypt(message=ciphertext, alphabet=best_alph)
-    best_score = fitness.score(best_plaintext) #+ fitness2.score(best_plaintext) #+ fitness3.score(best_plaintext) #+ fitness4.score(best_plaintext)
+    best_score = fitness.score(best_plaintext)
     #add initial as an entry
     scores_list.append((best_score, best_alph, best_plaintext))
     failure_count = 0
@@ -37,7 +32,7 @@ def decrypt(ciphertext, initial_alphabet=None, failures=10000, num_of_decryption
 
         new_alph = switch(best_alph, r1, r2)
         new_plaintext = substitutionCipher.decrypt(message=ciphertext, alphabet=new_alph)
-        new_score = fitness.score(new_plaintext) #+ fitness2.score(new_plaintext) #+ fitness3.score(new_plaintext) #+ fitness4.score(new_plaintext)
+        new_score = fitness.score(new_plaintext)
 
         if new_score > best_score:
             entry = (new_score, new_alph, new_plaintext) #add a tuple entry to scores list (later will be sorted)
