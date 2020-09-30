@@ -36,6 +36,7 @@ def generate_keyed_alphabet(keyword, default_alphabet=ALPHABET):
     return key_without_rep + alph_without_key
 
 #inverts an alphabet (e.g. if A --> B, B --> C, C --> D, the inverse will be B --> A, C --> B, D --> C)
+#precondition: alphabet is not incomplete
 def invert(alphabet, default_alphabet=ALPHABET):
 
     res = [''] * len(alphabet)
