@@ -35,7 +35,17 @@ def generate_keyed_alphabet(keyword, default_alphabet=ALPHABET):
 
     return key_without_rep + alph_without_key
 
+#inverts an alphabet (e.g. if A --> B, B --> C, C --> D, the inverse will be B --> A, C --> B, D --> C)
+def invert(alphabet, default_alphabet=ALPHABET):
 
+    res = [''] * len(alphabet)
+
+    count = 0
+    for letter in alphabet:
+        res[default_alphabet.find(letter)] = default_alphabet[count]
+        count += 1
+
+    return ''.join(res)
 
 if __name__ == '__main__':
     #note: case sensitive! case matters -- message should be all uppercase
@@ -82,12 +92,4 @@ if __name__ == '__main__':
         keyed_alphabet = generate_keyed_alphabet(key, custom_def_alphabet)
         print(decrypt(msg, keyed_alphabet, custom_def_alphabet))
 
-
-
-
-
-
-
-
-
-
+        
