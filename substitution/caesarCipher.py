@@ -5,7 +5,7 @@ from cryptanalysis.ngramFrequencyAnalysis import get_distinct_ngrams
 DEFAULT_ALPHABET = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
 
 #note that key can be either a letter in the alphabet or a numerical value
-def encrypt(key, message, alphabet='ABCDEFGHIJKLMNOPQRSTUVWXYZ'):
+def encrypt(key, message, alphabet=DEFAULT_ALPHABET):
 
     if str(key) in alphabet: #custom alphabet should NOT contain 0-9 or this will not work correctly
         key = alphabet.find(key) #shift = index of letter in the alphabet
@@ -19,7 +19,7 @@ def encrypt(key, message, alphabet='ABCDEFGHIJKLMNOPQRSTUVWXYZ'):
     return ''.join(ciphertext_list)
 
 
-def decrypt(key, message, alphabet='ABCDEFGHIJKLMNOPQRSTUVWXYZ'):
+def decrypt(key, message, alphabet=DEFAULT_ALPHABET):
 
     if str(key) in alphabet:  # custom alphabet should NOT contain 0-9 or this will not work correctly
         key = alphabet.find(key)  # shift = index of letter in the alphabet
@@ -35,6 +35,7 @@ def decrypt(key, message, alphabet='ABCDEFGHIJKLMNOPQRSTUVWXYZ'):
 
 
 def main():
+    
     #PRECONDITION: message-case matches ALPHABET case (this is case-sensitive!)
     msg = input("Enter message: ")
     custom_alphabet = input("Custom alphabet <y/n>?: ")
@@ -45,7 +46,6 @@ def main():
 
     alphabet = ''.join(get_distinct_ngrams(input("Enter an alphabet: "), n=1)) \
         if custom_alphabet.upper() == 'Y' else DEFAULT_ALPHABET
-
 
     key = input("Enter shift: ")
 
@@ -59,22 +59,3 @@ def main():
 
 if __name__ == '__main__':
    main()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
