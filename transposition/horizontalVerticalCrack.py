@@ -5,13 +5,18 @@ from numpy.random import permutation
 from itertools import combinations
 from substitution.manualSubDecoder import color
 from englishDetection import ngramScore, englishScore
-#decrypts a ciphertext by using a simulated annealing algorithm
+
+#decrypts a ciphertext by using a custom algorithm
+#Algorithm doesn't work 100% of the time, somewhat unpredictable
+#It is kind of like bogosort: https://en.wikipedia.org/wiki/Bogosort
+
 def decrypt(ciphertext, lowerBound, upperBound, n=1, direction='H', num_of_decryptions=10, num_of_times=200,
             fitness_score=ngramScore.ngram_score(ngramScore.QUADGRAMS).score): #this is the default fitness score
 
     decryptMessage = decrypt_horizontal if direction.upper() == 'H' else decrypt_vertical
 
     scores_list = []
+            
     #generate two random indexes
     for key in range(lowerBound, upperBound + 1):
         #max num of allowed failures (new score not greater than old)
@@ -45,11 +50,11 @@ def decrypt(ciphertext, lowerBound, upperBound, n=1, direction='H', num_of_decry
                best_score = fitness_score(best_plaintext)
 
            else:
-            best_score, best_perm, best_plaintext = entries[0][0], entries[0][1], entries[0][2]
-    print()
+                best_score, best_perm, best_plaintext = entries[0][0], entries[0][1], entries[0][2]
+    
+print()
     scores_list.sort(key=lambda x: x[0], reverse=True)
     return scores_list[:num_of_decryptions + 1] if len(scores_list) <= num_of_decryptions else scores_list
-
 
 
 def print_best_solutions(scores_list):
@@ -72,8 +77,6 @@ def get_switched_permutations(perm):
     return list(combinations(range(len(perm)), 2))
 
 
-
-
 def main():
     message = input("Enter a message: ")
     remove = input("Remove spaces? [y/n]: ")
@@ -87,46 +90,8 @@ def main():
 
     print_best_solutions(decrypt(message, lower, upper, n, direction, num_of_times,
     fitness_score= lambda x: englishScore.english_word_score(x, englishScore.COMMON_WORDS, 2)))
-    # fitness score can be changed!
-
+    # fitness score can be changed! Sometimes works better with ngram logarithmic probabilities, n = 3
+            
 
 if __name__ == '__main__':
     main()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
