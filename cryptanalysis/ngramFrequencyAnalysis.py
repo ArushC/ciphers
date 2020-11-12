@@ -142,10 +142,3 @@ if __name__ == '__main__':
         sliding = True #sliding window
     print_analysis(filtered, n, sliding)
 
-
-
-
-
-
-
-
