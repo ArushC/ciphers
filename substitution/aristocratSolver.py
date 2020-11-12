@@ -2,7 +2,8 @@ from substitution import wordPatterns, substitutionCipher
 import re, copy, time
 
 #note: an arisocrat cipher is any substitution cipher with known word boundaries
-#this program solves arisocrats, works best when character count >= 300
+#this program solves arisocrats, works best when word count >= 300 AND the majority
+#of words in the ciphertext appear in the dictionary file that you are using
 #check out the slideshow based on this program at tinyurl.com/ccslides31
 
 ALPHABET = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
@@ -127,19 +128,6 @@ def main(message):
     print("Plaintext: " + substitutionCipher.encrypt(message, inverse_key))
     
 
-
 if __name__ == '__main__':
     message = input("Enter a message: ")
     main(message)
-
-
-
-
-
-
-
-
-
-
-
-
