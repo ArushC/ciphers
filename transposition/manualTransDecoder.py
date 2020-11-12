@@ -4,6 +4,7 @@ from substitution.manualSubDecoder import color
 import re, copy, sys, ast, math
 import itertools
 from miscellaneous import pyperclip
+
 '''
 GOAL:
 
@@ -36,6 +37,7 @@ I) --> horizontal <--> vertical
 R --> are you sure? start over? etc.
 
 '''
+
 #returns a grid representation of the message: (a 2 dimensional list)
 def get_grid(msg, key):
     return break_into_ngrams_with_remainders(msg, key)
@@ -77,7 +79,6 @@ def invert_grid(grid, inverted): #rows --> columns... this is basically just a s
     return get_grid(msg, key)
 
 
-
 #returns grid with columns at indexes c_1 and c_2 switched
 def switch_columns(grid, c_1, c_2, column_nums):
     key = get_grid_key(grid)
@@ -90,6 +91,7 @@ def switch_columns(grid, c_1, c_2, column_nums):
     column_nums[i_1], column_nums[i_2] = column_nums[i_2], column_nums[i_1]
     new_msg_grid = get_columns_list(columns)
     return new_msg_grid, column_nums
+
 
 def get_columns_list(grid): #copied straight from ngramTransposition -- just changed variable names
     i = 0
@@ -105,8 +107,6 @@ def get_columns_list(grid): #copied straight from ngramTransposition -- just cha
         i += 1
 
     return result
-
-
 
 #returns grid with all rows reversed
 def reverse_rows(grid):
@@ -136,7 +136,6 @@ def factors(n): #using a simple algorithm to get list of all distinct factors
 
     f.sort()
     return f
-
 
 
 def main(ciphertext: str):
@@ -191,7 +190,7 @@ def main(ciphertext: str):
         print_grid(grid, column_nums)
 
 
-    while True:
+    while True: #main loop
 
         character = input("""
 S) switch two columns
@@ -318,11 +317,3 @@ Q) save and quit\n""")
 if __name__ == '__main__':
     ciphertext = input("Enter a message: ")
     main(ciphertext)
-
-
-
-
-
-
-
-
