@@ -56,8 +56,6 @@ def main():
     while not punc.upper() in 'YN':
         punc = input("Maintain punctuation <y/n>?: ")
 
-
-
     key = input("Enter a key: ")
 
     mode = input("Encrypt or decrypt <e/d>?: ")
@@ -67,7 +65,7 @@ def main():
         print(decrypt(key, msg))
     else:
         raise ValueError("ERROR: invalid mode")
-
+        
 
 if __name__ == '__main__':
     main()
