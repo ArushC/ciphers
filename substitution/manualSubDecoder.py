@@ -7,7 +7,9 @@ import sys, ast, random
 #declare constants
 BOLD_CHAR = ''
 
-class color:
+#taken from the answer to a StackOverflow question
+#https://stackoverflow.com/questions/8924173/how-do-i-print-bold-text-in-python/20210807
+class color:  
    PURPLE = '\033[95m'
    CYAN = '\033[96m'
    DARKCYAN = '\033[36m'
@@ -119,7 +121,6 @@ def print_special_frequency_analysis(ciphertext, bold_letters=[], non_bold_lette
     print("#n: %d" % count_distinct_ngrams(ciphertext, n=1))
     print("Total appearances: %d" % sum_of_appearances(ciphertext, n=1))
     print()
-
 
 
 #replaces every occurence of a nonbolded character with a bolded one
@@ -260,4 +261,3 @@ def main(ciphertext: str):
 if __name__ == '__main__':
     C = input("What message will I be decoding today: ")
     main(C)
-
