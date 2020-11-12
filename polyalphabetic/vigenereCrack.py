@@ -12,7 +12,7 @@ ALPHABET = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
 def decrypt(ciphertext: str, columns, lower, upper, max_failures=1000):
 
     entries = []
-    fitness = ngramScore.ngram_score(ngramScore.QUADGRAMS)
+    fitness = ngramScore.ngram_score(ngramScore.QUADGRAMS) #change to ngramScore.TRIGRAMS for faster decryption
     num_of_failures = 0
 
     for key in range(lower, upper + 1):
@@ -74,7 +74,7 @@ def get_new_key(best_key): #randomly shift one of the letters in the key to get 
     return new_key
 
 #returns the initial key based on chi-squared values of the 'columns' in the message
-#returns the ACTUAL KEY that was used to encrypt the message the majority of the time, when the value for n is chosen correctly
+#note this returns the ACTUAL KEY that was used to encrypt the message the majority of the time, when the value for n is chosen correctly
 def get_initial_key(msg: str, n):
 
     final_entries = []
