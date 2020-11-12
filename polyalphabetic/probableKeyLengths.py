@@ -5,7 +5,7 @@ import re, math
 
 nonletters = re.compile('[^A-Za-z]')
 
-def get_confidence_interval(msg, period, confidence_level=99.99): #this is close to the confidence level that dCode uses
+def get_confidence_interval(msg, period, confidence_level=95): #returns IOC 95% confidence interval
     iocs_list = [cipherStats.ioc(msg[i::period]) for i in range(period)]
     x_bar = statistics.mean(iocs_list)
     n = period
@@ -37,7 +37,6 @@ def print_probable_key_lengths(msg, max_period=26, confidence_level=99.995):
         print("L = %-3.2d Average IOC ~= %7.5f \u00B1 %.3f" %item)
 
     return ''
-
 
 #returns the tuple for the length L that has the highest average IOC
 def get_most_probable_key_length(msg, max_period=26):
