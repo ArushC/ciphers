@@ -5,7 +5,7 @@ from miscellaneous import pyperclip
 
 
 
-def encrypt(msg, permutation, offset):
+def encrypt(msg, permutation, offset=0):
     # Each string in ciphertext represents a row in the grid.
     key = len(permutation)
     ciphertext = [''] * key
@@ -24,7 +24,7 @@ def encrypt(msg, permutation, offset):
 
     return ''.join(rearrange_rows(ciphertext, permutation))
 
-def decrypt(msg, permutation, offset):
+def decrypt(msg, permutation, offset=0):
 
     key = len(permutation)
     # step 5 in decryption: use the ciphertext chunks to put together the message with a process similar to encryption
