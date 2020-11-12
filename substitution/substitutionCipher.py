@@ -25,7 +25,7 @@ def generate_random_alphabet(default_alphabet=ALPHABET):
 
 
 #generates a keyed alphabet given a keyword
-#ex. key = KEY
+#ex. key = 'KEY'
 #alphabet: KEYABCDFGHIJLMNOPQRSTUVWXZ
 def generate_keyed_alphabet(keyword, default_alphabet=ALPHABET):
 
@@ -48,8 +48,9 @@ def invert(alphabet, default_alphabet=ALPHABET):
 
     return ''.join(res)
 
+
 if __name__ == '__main__':
-    #note: case sensitive! case matters -- message should be all uppercase
+    #note: case sensitive! message should be ALL UPPERCASE
     msg = input("Enter a message: ")
 
     custom_def_alphabet = input("Custom (default) alphabet <y/n>?: ")
@@ -62,7 +63,8 @@ if __name__ == '__main__':
         if custom_def_alphabet.upper() == 'Y' else ALPHABET
 
     mode = input("Encrypt/Decrypt <e/d>?: ")
-    # more input validation :-)
+    
+    # more input validation
     while not mode.upper() in 'ED':
         key = input("Please enter a valid mode:")
     if mode.upper() == 'E':
