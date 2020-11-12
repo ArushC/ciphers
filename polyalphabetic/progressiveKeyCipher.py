@@ -24,10 +24,9 @@ def decrypt(message, f_n = lambda x: x, alphabet=ALPHABET):
         result.append(caesarCipher.decrypt(shift, message[i], alphabet))
     return ''.join(result)
 
-
-def fibonacci(n):
-    """ Calculate Nth Fibonacci number using the doubling method. Return the
-    tuple (F(n), F(n+1))."""
+#Calculates the nth fibonnaci number using the doubling method, returns the tuple (F(n), F(n+1)).
+#Taken from https://funloop.org/post/2017-04-14-computing-fibonacci-numbers.html
+def fibonacci(n): 
     if n == 0:
         return (0, 1)
     else:
@@ -41,12 +40,15 @@ def fibonacci(n):
 
 
 def main():
-
+    
     msg = input("Enter a message: ")
     nonletters = re.compile('[^a-zA-Z]')
+    
+    f_n = F_N
+    
     #remove nonalphabetical chars from message & convert message to uppercase
     msg = re.sub(nonletters, '', msg).upper()
-    f_n = F_N #change F_N to change the function being applied to the nth character!
+    
     mode = input("Encrypt/Decrypt <e/d>: ")
     if mode.upper() == 'E':
         print(encrypt(msg, f_n))
@@ -55,23 +57,3 @@ def main():
 
 if __name__ == '__main__':
     main()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
