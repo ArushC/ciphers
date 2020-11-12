@@ -5,8 +5,6 @@ from cryptanalysis.ngramFrequencyAnalysis import count_distinct_ngrams, break_in
 break_into_ngrams
 from englishDetection import englishScore
 
-
-
 def main():
     message = input("Enter a message: ")
     remove = input("Remove spaces? [y/n]: ")
@@ -31,7 +29,7 @@ def main():
         except ValueError:
             #it must be a string key
             key = key_permutation(raw_inp)
-#
+
         mode = input("Mode <encrypt/decrypt>?: ")
         filler = input("Filler = ")
         if mode == 'encrypt':
@@ -52,6 +50,8 @@ def main():
 
         # Copy the encrypted string in ciphertext to the clipboard.
         pyperclip.copy(ciphertext)
+        print()
+        print("Result copied to clipboard")
 
 
 def convert_to_tuple(myPermutation): #function accepts input and converts the string into a tuple
@@ -71,7 +71,7 @@ def convert_to_tuple(myPermutation): #function accepts input and converts the st
             i -= 1
         if len(s) > 0:
             myPermutation[i - 1] = int(s)
-            #do something
+            
     myPermutation = tuple(myPermutation)
     return myPermutation
 
@@ -224,7 +224,6 @@ def encrypt_vertical(message, key, n=1, filler='X'):
     return ''.join(result)
 
 
-
 #this was EXTREMELY DIFFICULT to write and took a lot of thinking
 #works for both complete AND incomplete columnar transposition
 def decrypt_vertical(message, key, n=1):
@@ -344,10 +343,5 @@ def display_best_decryptions(message, direction, lowerBound, higherBound, n=1, n
     return decryptions[0][2]
 
 
-
 if __name__ == '__main__':
     main()
-
-
-
-
