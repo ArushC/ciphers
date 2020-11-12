@@ -8,11 +8,8 @@ from substitution.caesarCipher import decrypt
 
 BOLD_CHAR = '‡'
 
-
-
 nonletters = re.compile('[^a-zA-Z]')
 ALPHABET = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
-
 
 #VIEW-COLUMN FUNCTIONS -------------------------------------------------------------------------------------------
 #PRECONDITION: message is [A-Z], all uppercase (no foreign characters)
@@ -91,7 +88,6 @@ def print_nth_column_frequencies(message, key, n):
     nth_column = get_nth_column(message, key, n)
     print_special_frequency_analysis(nth_column, default_input='Y') if not BOLD_CHAR in nth_column else \
     print_special_frequency_analysis(nth_column, bold_letters=get_distinct_ngrams(message, n=1), default_input='Y')
-
 
 
 #returns the message with the nth column shifted & bolded
@@ -204,6 +200,7 @@ def print_highlighted_message(original_message, columns_message, key, n, highlig
 
     print()
 
+    
 def main(ciphertext: str):
 
     print()
@@ -237,23 +234,22 @@ def main(ciphertext: str):
         letter_shifts = ['?'] * key
         print()  # padding
         print()
-
-
-
-
-
-    while True:
+        
+   
+    while True:   #main loop  
 
         character = input("""Enter a column number [1 - %d]
 F) view overall frequencies of original message
 V) change viewing window
 R) reset message
 Q) save and quit\n""" %key)
+        
         #input validation
         while not (character.isnumeric() or character.upper() in 'FVRQ'):
             character = input("Please enter a valid column number or 'F', 'V', 'R', or 'Q': ")
 
         if character.isnumeric():
+            
             #input validation
             while not (0 < int(character) <= key):
                 try:
