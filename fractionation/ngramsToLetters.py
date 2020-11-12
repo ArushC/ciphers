@@ -3,8 +3,6 @@ from cryptanalysis import ngramFrequencyAnalysis
 #89 character default alphabet --> consists of every useful character on the keyboard
 DEFAULT_ALPHABET = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()+=-[]{}:;,.<>/?\|'
 
-
-
 def ngrams_to_letters(msg, n, alphabet = DEFAULT_ALPHABET):
     ngram_list = []
     possible_ngrams = ngramFrequencyAnalysis.get_distinct_ngrams(msg, n)
