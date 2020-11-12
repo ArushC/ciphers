@@ -93,19 +93,3 @@ R) Redefence cipher
 if __name__ == '__main__':
     message = input("Enter a message: ")
     main(message) #optional: change the default dictionary file and fitness file
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
