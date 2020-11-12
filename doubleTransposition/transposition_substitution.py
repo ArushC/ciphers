@@ -7,8 +7,9 @@ from substitution import substitutionCrack
 from transposition.manualTransDecoder import factors
 from transposition import redefence
 import time
+
 NGRAMS = 3 #This constant determines how possible results will be 'scored'
-#in this case, the 'best' solution will have the highest max trigram count
+#in this case, the 'best' solution will have the highest max trigram count (scoring tends to work the best w/ trigrams)
 
 best_entries = [] #a global list -- it will be assigned values in main
 bruteforced = False
@@ -39,6 +40,7 @@ N) try reverse every n
 I) try nfid (transposition in blocks)
         \n""")
         print()  # padding
+        
         # input validation
         while not character.upper() in 'RHVFDSONI':
             character = input("Please enter 'R', 'H', 'V', 'F', 'D', 'S', 'O', 'N', or 'I': ")
@@ -105,7 +107,7 @@ I) try nfid (transposition in blocks)
                 lowerBound=key, upperBound=key, num_of_times=iterations, n=n, direction=character.upper(),
                 fitness_score=lambda x: get_most_frequent_ngram_count(x, n=NGRAMS))
 
-                horizontalVerticalCrack.print_best_solutions(best_entries) #this is the scoring method)
+                horizontalVerticalCrack.print_best_solutions(best_entries) #this is the scoring method
                 print()
 
         elif character.upper() in 'SON':
@@ -170,6 +172,7 @@ def get_best_decryptions_railfence(msg: str, num_of_decryptions=10):
     print() #padding
     return retrieve_best_entries(entries, num_of_decryptions)
 
+#used for encryption in blocks (NFID)
 def get_best_decryptions_nfid(msg, num_of_decryptions=10):
     #this one only checks for the FACTORS of the message length -- it doesn't make sense if the numbers do not
     # go in evenly
@@ -209,6 +212,7 @@ def get_best_decryptions_other(msg, lowerBound, upperBound, mode, number_of_decr
 
     return retrieve_best_entries(entries, number_of_decryptions)
 
+#get redefence decryptions
 def get_best_decryptions_redefence(msg, number_of_decryptions=10):
 
     permutations = ngramTransposition.generatePermutations(2, 6)
@@ -318,6 +322,7 @@ def prompt_lower_upper_bound(msg):
     upperBound = int(upperBound)
 
     return lowerBound, upperBound
+
 
 def attempt_substitution_break(scores_list, mode):
     print()
