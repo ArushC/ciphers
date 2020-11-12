@@ -52,7 +52,6 @@ def decrypt(ciphertext, initial_alphabet=None, failures=10000, num_of_decryption
                 break
             failure_count += 1
 
-
     print() #padding
 
     scores_list.sort(key = lambda x: x[0], reverse=True)
@@ -70,7 +69,6 @@ def print_best_solutions(scores_list):
             break
 
     pyperclip.copy(scores_list[0][2])
-
 
 
 #returns list with switched elements at two distinct indexes in a list
@@ -107,8 +105,6 @@ def get_initial_alphabet(msg: str): #returns the initial alphabet solely based o
     return ''.join(return_alphabet)
 
 
-
-
 def main(message, failures=10000, initial_alphabet=substitutionCipher.generate_random_alphabet()):
 
     message = message.upper()
@@ -117,7 +113,7 @@ def main(message, failures=10000, initial_alphabet=substitutionCipher.generate_r
     print()
     print("#1 best solution copied to clipboard")
 
+    
 if __name__ == '__main__':
     message = input("Enter a message: ")
     main(message)
-
