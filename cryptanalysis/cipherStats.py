@@ -1,11 +1,9 @@
 #This program is based on https://bionsgadgets.appspot.com/gadget_forms/acarefstats.html
 #the statistics are all coded here
-
 from cryptanalysis.ngramFrequencyAnalysis import get_ngrams_with_frequencies, break_into_ngrams
 import re
 
 nonletters = re.compile('[^A-Za-z]')
-
 
 #index of coincidence -- this version works for ALL MESSAGES
 #so if your message contains symbols or digits, they will be considered in the calculation
@@ -64,6 +62,7 @@ def mka(msg):
 
     return max(*kappa_values)
 
+
 #DIC = digraphic index of coincidence
 #Note: works in a SLIDING WINDOW
 def dic(msg):
@@ -77,6 +76,7 @@ def dic(msg):
         sum += (n * (n - 1)) / (N * (N - 1))
 
     return sum
+
 
 #EDI = digraphic index of coincidence in a BLOCK WINDOW
 def edi(msg):
@@ -122,11 +122,13 @@ def rod_and_lr_helper(msg):
 
     return r3, sum_odd, sum_all
 
+
 #ROD = the percentage of odd spaced repeats
 def rod(msg):
     r3, sum_odd, sum_all = rod_and_lr_helper(msg)
     rod = sum_odd/sum_all
     return rod
+
 
 #LR = the square root of the percentage of 3-character repeats
 def lr(msg):
@@ -138,6 +140,7 @@ def lr(msg):
 
 if __name__ == '__main__':
     msg = input("Enter a message:")
+    
     keep_spaces = input("Remove spaces <y/n>?: ")
     while not (keep_spaces.upper() == 'Y' or keep_spaces.upper() == 'N'):
         keep_spaces = input("Remove spaces <y/n>?: ")
