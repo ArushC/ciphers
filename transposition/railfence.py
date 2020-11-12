@@ -1,32 +1,33 @@
 from miscellaneous import pyperclip
 from englishDetection import englishScore
 
-
 def main():
-    myMessage = input("Enter a message: ")
+    message = input("Enter a message: ")
     remove = input("Remove spaces? [y/n]: ")
     if remove == 'y':
-        myMessage = myMessage.replace(" ", "")
-    hack = input("Hack <y/n>?")
-    if hack == 'y':
+        message = message.replace(" ", "")
+    crack = input("Crack code <y/n>?")
+    if crack == 'y':
         lowerBound = int(input("Lower bound: "))
         higherBound = int(input("Higher bound: "))
-        result = displayBestDecryptions(myMessage, lowerBound, higherBound)
+        result = displayBestDecryptions(message, lowerBound, higherBound)
     else:
-        myMode = input("Mode <encrypt/decrypt>?: ")
-        myKey = int(input("Enter key: "))
-        myOffset = int(input("Offset?: "))
-        if myMode == 'encrypt':
-            result = encryptMessage(myKey, myMessage, myOffset)
+        mode = input("Mode <encrypt/decrypt>?: ")
+        key = int(input("Enter key: "))
+        offset = int(input("Offset?: "))
+        if mode == 'encrypt':
+            result = encryptMessage(key, message, offset)
         elif myMode == 'decrypt':
-            result = decryptMessage(myKey, myMessage, myOffset)
+            result = decryptMessage(key, message, offset)
+        
+         # Print the encrypted string in ciphertext to the screen, with
+        # a | ("pipe" character) after it in case there are spaces at
+        # the end of the encrypted message.
         print(result + '|')
         pyperclip.copy(result)
-    # Print the encrypted string in ciphertext to the screen, with
-    # a | ("pipe" character) after it in case there are spaces at
-    # the end of the encrypted message.
-
-    # Copy the encrypted string in ciphertext to the clipboard.
+        print()
+        print("Result copied to clipboard")
+        
 
 def determineValues(key, offset): #determine starting row value and whether increasing/decreasing based on offset
     modular_equivalent = 2 * key - 2
@@ -105,4 +106,3 @@ def displayBestDecryptions(message, lowerBound, higherBound, num_of_decryptions=
 
 if __name__ == '__main__':
     main()
-
