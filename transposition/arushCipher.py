@@ -1,6 +1,8 @@
 from transposition.reverseEveryN import reverse
 from miscellaneous.pyperclip import copy
 #This is a custom transposition algorithm that I invented
+#Note: EXTREMELY difficult to encode/decode by hand
+#Only intended to be implemented in a programming setting
 
 #############################################################
 #SAMPLE ENCRYPTION #1
@@ -143,5 +145,3 @@ def main():
 
 if __name__ == '__main__':
     main()
-
-
