@@ -48,7 +48,6 @@ def calculate_chi_squared(msg, n=1, exp=EXPECTED):
     return s
 
 
-
 #generates the parameter 'expected' for any string that is being compared to randomness
 def generate_expected(msg, n=1, alphabet=''):
 
@@ -63,7 +62,6 @@ def generate_expected(msg, n=1, alphabet=''):
         expected[ngram] = expected_value
 
     return expected
-
 
 
 #generates a list of all possible ngrams from a given alphabet
