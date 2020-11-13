@@ -3,7 +3,8 @@ from transposition.ngramTransposition import key_permutation, get_permutation, g
 invert, convert_to_tuple
 from miscellaneous import pyperclip
 
-
+#Notice that a lot of code that was used for the redefence cipher was copied from the  
+#railfence cipher source code, and then modified slightly
 
 def encrypt(msg, permutation, offset=0):
     # Each string in ciphertext represents a row in the grid.
@@ -20,9 +21,9 @@ def encrypt(msg, permutation, offset=0):
         row += step  # change the row (depending on whether the fence is going up or down)
         index += 1  # move to next character in message
 
-    #Finally, rearrange the rows
-
+    #finally, rearrange the rows
     return ''.join(rearrange_rows(ciphertext, permutation))
+
 
 def decrypt(msg, permutation, offset=0):
 
@@ -78,7 +79,6 @@ def rearrange_rows(rows: list, permutation: tuple):
     return result
 
 
-
 def main():
     message = input("Enter a message: ")
     remove = input("Remove spaces? [y/n]: ")
@@ -106,9 +106,9 @@ def main():
     # a | ("pipe" character) after it in case there are spaces at
     # the end of the encrypted message.
     print(ciphertext + '|')
-
-    # Copy the encrypted string in ciphertext to the clipboard.
+    print()
     pyperclip.copy(ciphertext)
+    print("Result copied to clipboard")  
 
 
 if __name__ == '__main__':
