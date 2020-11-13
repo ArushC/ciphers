@@ -3,11 +3,9 @@ from miscellaneous import pyperclip
 from cryptanalysis import ngramFrequencyAnalysis
 from transposition import reverseEveryN
 
-avg_word_length_list = []
-
 def main():
 
-    message = input("Enter message: ").replace('|', '') # '|' char from an encryption is not part of the message
+    message = input("Enter message: ")
     key = int(input("Enter key: "))
     remove_spaces = input("Remove spaces <y/n>?: ")
     if remove_spaces.upper() == 'Y':
@@ -25,11 +23,12 @@ def main():
     elif mode.upper() == 'DECRYPT':
         plaintext = decrypt(key, message, reversed_blocks=rb)
     else:
-            plaintext = "ERROR: Invalid mode"
+        plaintext = "ERROR: Invalid mode"
     # Print with a | ("pipe" character) after it in case
     # there are spaces at the end of the decrypted message.
     print(plaintext + '|')
-
+    print()
+    print("Result copied to clipboard")
     pyperclip.copy(plaintext)
 
 #basic route cipher -- write horizontally read down the columns
