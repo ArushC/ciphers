@@ -1,4 +1,4 @@
-from transposition import swagmanCipher, reverseEveryN, ngramTransposition
+from transposition import boxCipher, reverseEveryN, ngramTransposition
 from cryptanalysis.ngramFrequencyAnalysis import break_into_ngrams_with_remainders, get_distinct_ngrams
 from substitution.manualSubDecoder import color
 import re, copy, sys, ast, math
@@ -71,11 +71,11 @@ def print_row_labels(column_nums):
 
 
 #returns an inverted grid
-def invert_grid(grid, inverted): #rows --> columns... this is basically just a swagman cipher with key = grid key
+def invert_grid(grid, inverted): #rows --> columns... this is basically just a box cipher with key = grid key
 
     key = get_grid_key(grid)
-    msg = swagmanCipher.encrypt(key, message = ''.join(grid), filler=' ') if inverted \
-    else swagmanCipher.decrypt(key, message = ''.join(grid))
+    msg = boxCipher.encrypt(key, message = ''.join(grid), filler=' ') if inverted \
+    else boxCipher.decrypt(key, message = ''.join(grid))
     return get_grid(msg, key)
 
 
