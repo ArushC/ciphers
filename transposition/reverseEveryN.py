@@ -1,6 +1,5 @@
 from cryptanalysis.ngramFrequencyAnalysis import break_into_ngrams, break_into_ngrams_with_remainders
 
-
 def reverse(message): #reverses the entire message
     translated = ""
     for i in range(len(message) - 1, -1, -1):
@@ -23,13 +22,13 @@ def encrypt(message, key, splitter=''):
     result = [reverse(ngrams[i]) for i in range(stop)]
     return ''.join(result) + splitter + extra
 
+
 def decrypt(message, key, splitter=''):
     message = message.replace(splitter, '') #splitter is not a part of the actual message
     num_of_remainders = len(message) % key
     truncated = message[:len(message) - num_of_remainders]
     remainder = message[len(message) - num_of_remainders:]
     return encrypt(truncated, key) + reverse(remainder)
-
 
 
 def main():
@@ -40,8 +39,6 @@ def main():
         print(encrypt(message, key))
     elif mode.upper() == 'D':
         print(decrypt(message, key))
-
-
 
 
 if __name__ == '__main__':
