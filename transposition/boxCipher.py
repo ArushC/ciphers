@@ -31,6 +31,7 @@ def main():
     print("Result copied to clipboard")
     pyperclip.copy(plaintext)
 
+    
 #basic route cipher -- write horizontally read down the columns
 #the key specifies the width of the grid
 def encrypt(key, message, filler='X', reversed_blocks=False):
@@ -40,6 +41,7 @@ def encrypt(key, message, filler='X', reversed_blocks=False):
     else:
         return encrypt_vertical(message, perm, n=1, filler=filler)
 
+    
 def decrypt(key, message, reversed_blocks=False):
     if reversed_blocks:
         message = reverseEveryN.decrypt(message, int(len(message)/key))
