@@ -1,6 +1,5 @@
-from transposition import swagmanCipher
 from cryptanalysis.ngramFrequencyAnalysis import break_into_ngrams_with_remainders
-from transposition.swagmanCipher import encrypt, decrypt
+from transposition.boxCipher import encrypt, decrypt
 
 #n = # of characters that represent one letter
 #this is encryption in blocks
@@ -27,7 +26,6 @@ def nfid_decode(c, period, n):
         result.append(decrypt(key=n, message=c_list[i]))
 
     return ''.join(result)
-
 
 
 def main():
