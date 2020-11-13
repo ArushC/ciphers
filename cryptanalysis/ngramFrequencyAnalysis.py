@@ -1,5 +1,4 @@
-import operator
-import re
+import operator, re
 
 #This code works for both block windows and sliding windows
 #each function has a boolean parameter 'sliding' to indicate whether the message
