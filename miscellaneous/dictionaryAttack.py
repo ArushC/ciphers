@@ -6,6 +6,10 @@ from transposition import ngramTransposition, redefence
 from polyalphabetic import vigenereCipher
 import re
 
+# break a cipher using a dictionary attack (40000 English words)
+#works for keyword ciphers and vigenere ciphers (cipher_type = 'k' --> keyword cipher, 'v' ---> vigenere cipher,
+#                                                'c' ---> columnar transposition, 'h' --> horizontal transposition,
+#                                                'r' ---> redefence cipher)
 def dict_attack(c, cipher_type, min_word_length=1, max_word_length = 1000, dictionary_file= FULL_DICTIONARY,
                 fitness_file=ngramScore.TRIGRAMS, fitness = None):
 
