@@ -307,7 +307,7 @@ def get_permutation(inp: tuple):
     return invert(tuple(indexes_list))
 
 #converts an alphabetical key to a permutation
-#EXAMPLE: "KEY" --> (2, 1, 3) because alphabetical order
+#EXAMPLE: "PORK" --> (4, 2, 1, 3) because alphabetical order
 def key_permutation(inp: str, alphabet='ABCDEFGHIJKLMNOPQRSTUVWXYZ'):
     #1. take out non-letters and spaces and convert to upper-case
     regex = re.compile('[^a-zA-Z]')
@@ -318,7 +318,7 @@ def key_permutation(inp: str, alphabet='ABCDEFGHIJKLMNOPQRSTUVWXYZ'):
         nums.append(alphabet.index(letter))
 
     #3. get the appropriate permutation
-    return get_permutation(tuple(nums))
+    return invert(get_permutation(tuple(nums)))
 
 
 def display_best_decryptions(message, direction, lowerBound, higherBound, n=1, num_of_decryptions=10, silentMode=False):
