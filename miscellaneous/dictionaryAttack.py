@@ -6,15 +6,13 @@ from transposition import ngramTransposition, redefence
 from polyalphabetic import vigenereCipher
 import re
 
-# break a cipher using a dictionary attack (40000 English words)
-#works for keyword ciphers and vigenere ciphers (cipher_type = 'k' --> keyword cipher, 'v' ---> vigenere cipher,
-#                                                'c' ---> columnar transposition, 'h' --> horizontal transposition,
-#                                                'r' ---> redefence cipher)
-def dict_attack(c, cipher_type, min_word_length=1, max_word_length = 1000,
-    dictionary_file= FULL_DICTIONARY, fitness_file=ngramScore.TRIGRAMS):
+def dict_attack(c, cipher_type, min_word_length=1, max_word_length = 1000, dictionary_file= FULL_DICTIONARY,
+                fitness_file=ngramScore.TRIGRAMS, fitness = None):
 
     nonletters = re.compile('[^A-Za-z]')
-    fitness = ngramScore.ngram_score(fitness_file)
+
+    if fitness is None: #if no alternate scoring method specified, use ngram-scoring from the appropriate fitness file
+        fitness = lambda x: ngramScore.ngram_score(fitness_file).score(x)
 
     with open(FULL_DICTIONARY) as wordbook:
         # take out words from the dictionary that are > the minimum word length
@@ -43,7 +41,7 @@ def dict_attack(c, cipher_type, min_word_length=1, max_word_length = 1000,
             permutation = ngramTransposition.key_permutation(word)
             plaintext = redefence.decrypt(c, permutation)
 
-        score = fitness.score(plaintext)
+        score = fitness(plaintext)
         scores_list.append((score, decryption_key, plaintext))
 
     scores_list.sort(key=lambda x: x[0], reverse=True)
