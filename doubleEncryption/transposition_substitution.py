@@ -342,14 +342,14 @@ def print_best_redefence(entries):
 
 
 def prompt_lower_upper_bound(msg):
-    lowerBound = input("Enter lower bound (MIN = 1): ")
-    while not (lowerBound.isnumeric() and (int(lowerBound) >= 1 and int(lowerBound) <= len(msg))):  # input validation
+    lowerBound = input("Enter lower bound (MIN = 2): ")
+    while not (lowerBound.isnumeric() and (int(lowerBound) >= 2 and int(lowerBound) <= len(msg))):  # input validation
         lowerBound = input("Enter a valid lower bound: ")
 
     lowerBound = int(lowerBound)
 
     upperBound = input("Enter upper bound (MAX = %d): " %len(msg))
-    while not (upperBound.isnumeric() and ((int(upperBound) >= 1 and int(upperBound) <= len(msg)) and
+    while not (upperBound.isnumeric() and ((int(upperBound) >= 2 and int(upperBound) <= len(msg)) and
                                            int(upperBound) >= lowerBound)):  # input validation
         upperBound = input("Enter a valid upper bound: ")
 
