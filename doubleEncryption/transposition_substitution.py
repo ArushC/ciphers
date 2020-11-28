@@ -8,9 +8,9 @@ from transposition.manualTransDecoder import factors
 from transposition import redefence
 from miscellaneous import dictionaryAttack
 import time
+
 NGRAMS = 3 #This constant determines how possible results will be 'scored'
 #in this case, the 'best' solution will have the highest max trigram count
-
 best_entries = [] #a global list -- it will be assigned values in main
 bruteforced = False
 
