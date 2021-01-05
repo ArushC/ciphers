@@ -1,4 +1,4 @@
-from transposition import railfence, swagmanCipher, reverseEveryN, ngramTransposition
+from transposition import railfence, boxCipher, reverseEveryN, ngramTransposition
 from cryptanalysis.ngramFrequencyAnalysis import get_ngrams_with_frequencies, get_most_frequent_ngram_count
 from fractionation import nfid
 from substitution.manualSubDecoder import color
@@ -8,9 +8,9 @@ from transposition.manualTransDecoder import factors
 from transposition import redefence
 from miscellaneous import dictionaryAttack
 import time
-
 NGRAMS = 3 #This constant determines how possible results will be 'scored'
 #in this case, the 'best' solution will have the highest max trigram count
+
 best_entries = [] #a global list -- it will be assigned values in main
 bruteforced = False
 
@@ -34,15 +34,15 @@ H) try horizontal transposition
 V) try vertical transposition
 F) try railfence
 D) try redefence
-S) try swagman
-O) try swagman with reversed blocks
+B) try box cipher
+O) try box cipher with reversed blocks
 N) try reverse every n
 I) try nfid (transposition in blocks)
         \n""")
         print()  # padding
         # input validation
-        while not character.upper() in 'RHVFDSONI':
-            character = input("Please enter 'R', 'H', 'V', 'F', 'D', 'S', 'O', 'N', or 'I': ")
+        while not character.upper() in 'RHVFDBONI':
+            character = input("Please enter 'R', 'H', 'V', 'F', 'D', 'B', 'O', 'N', or 'I': ")
 
         if character.upper() == 'R':
             reversed_msg = not reversed_msg
@@ -148,7 +148,7 @@ D) dictionary attack
 
                     dictionaryAttack.print_best_solutions(best_entries)
 
-        elif character.upper() in 'SON':
+        elif character.upper() in 'BON':
             lowerBound, upperBound = prompt_lower_upper_bound(msg)
             print() #padding
             best_entries[:] = get_best_decryptions_other(msg=msg, mode=character.upper(), lowerBound=lowerBound,
@@ -220,7 +220,7 @@ def get_best_decryptions_nfid(msg, num_of_decryptions=10):
             if (period * n) > len(msg):
                 break #possible_values is sorted, so once period is too big, just break out of this iteration
             plaintext = nfid.nfid_decode(msg, period, n)
-            most_freq_ngram, most_freq_ngram_count = get_most_frequent_ngram_and_count(plaintext, n=NGRAMS, sliding=False)  # trigrams
+            most_freq_ngram, most_freq_ngram_count = get_most_frequent_ngram_and_count(plaintext, n=NGRAMS)  # trigrams
             entries.append((most_freq_ngram_count, most_freq_ngram, n, period, plaintext))
 
     return retrieve_best_entries(entries, num_of_decryptions)
@@ -231,14 +231,14 @@ def get_best_decryptions_other(msg, lowerBound, upperBound, mode, number_of_decr
 
     if mode in 'SO':
         reversed_blocks = True if mode.upper() == 'O' else False
-        swagman = True
+        box = True
     else:
-        swagman = False #this means that it is a reverse every n decryption
+        box = False #this means that it is a reverse every n decryption
 
     entries = []
     for key in range(lowerBound, upperBound + 1):
-        if swagman:
-            plaintext = swagmanCipher.decrypt(key=key, message=msg, reversed_blocks=reversed_blocks)
+        if box:
+            plaintext = boxCipher.decrypt(key=key, message=msg, reversed_blocks=reversed_blocks)
         else:
             plaintext = reverseEveryN.decrypt(msg, key)
 
@@ -376,7 +376,7 @@ def attempt_substitution_break(scores_list, mode):
         #determine which printout to do in the loop based on global variables and function parameters
         #not the best way to do this but I was lazy
         print()
-        if mode.upper() in 'SON':
+        if mode.upper() in 'BON':
             print_best_other(best_entries)
         elif mode.upper() == 'I':
             print_best_nfid(best_entries)
