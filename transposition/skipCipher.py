@@ -12,7 +12,7 @@ def encrypt_skip(msg, skip, start_index=0):
 
     else:
         index = start_index
-        ciphertext = []               #HELLOTHERE
+        ciphertext = []
         while index < start_index + len(msg) * skip:
             ciphertext.append(msg[index % len(msg)])
             index += skip
@@ -28,7 +28,7 @@ def encrypt_indexes_skip(indexes_list, skip, start_index=0):
 
     else:
         index = start_index
-        rearranged_indexes = []  # HELLOTHERE
+        rearranged_indexes = []
         while index < start_index + len(indexes_list) * skip:
             rearranged_indexes.append(indexes_list[index % len(indexes_list)])
             index += skip
