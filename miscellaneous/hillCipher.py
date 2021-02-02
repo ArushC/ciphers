@@ -86,17 +86,21 @@ def main():
     while not (mode.upper() in 'ED'):  # input validation
         mode = input("Encrypt/decrypt <e/d>?: ")
 
+    keyword_mode = input("Keyword written across rows, or down columns? <r/c>?: ").upper()
+    while not keyword_mode in 'RC':
+        keyword_mode = input("Please enter either 'R' for rows or 'C' for columns: ")
+
     keyword = input("Keyword = ")
     keyword = re.sub(nonletters, '', keyword).upper()
-    matrix = get_keyword_matrix(keyword)
+    matrix = get_keyword_matrix(keyword, mode=keyword_mode)
 
     #make sure keyword length is a perfect square and is invertible mod26
 
-    while (int(math.sqrt(len(keyword)) + 0.5) ** 2 != len(keyword)) or gcd(round(np.linalg.det(matrix) % 26), 26) != 1:
-        print("Keyword length must be a perfect square and be invertible mod26.") #input validation loop
+    while int(math.sqrt(len(keyword)) + 0.5) ** 2 != len(keyword) or gcd(round(np.linalg.det(matrix) % 26), 26) != 1:
+        print("Keyword length must be a perfect square and be invertible mod26.")
         keyword = input("Keyword = ")
         keyword = re.sub(nonletters, '', keyword).upper()
-        matrix = get_keyword_matrix(keyword)
+        matrix = get_keyword_matrix(keyword, mode=keyword_mode)
 
     if mode.upper() == 'E':
         print(encrypt(msg, matrix))
