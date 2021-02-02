@@ -4,4 +4,6 @@ A library of interactive programs to solve and break classical ciphers in crypto
 
 This library is a permanent work-in-progress! There are many ciphers that could potentially be added to this library that have not yet been implemented (e.g. double transposition, homophonic substitution, keyed Vigenere). 
 
+Note that programs are interactive and each program can be run individually.
+
  If you have a suggestion for a cipher that could be implemented, don't hesitate to reach out! Please email clubcryptology@gmail.com or text 650-468-8850 with your suggestions.
