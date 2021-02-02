@@ -92,7 +92,7 @@ def main():
     #make sure keyword length is a perfect square and is invertible mod26
     matrix = get_keyword_matrix(keyword)
 
-    while int(math.sqrt(len(keyword)) + 0.5) ** 2 != len(keyword) or gcd(round(np.linalg.det(matrix)) % 26, 26) != 1:
+    while int(math.sqrt(len(keyword)) + 0.5) ** 2 != len(keyword) or gcd(int(round(np.linalg.det(matrix)) % 26), 26) != 1:
         print("Keyword length must be a perfect square and be invertible mod26.")
         keyword = input("Keyword = ")
         keyword = re.sub(nonletters, '', keyword).upper()
