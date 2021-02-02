@@ -101,7 +101,6 @@ def main():
     keyword = re.sub(nonletters, '', keyword).upper()
 
     ommitted_letter = input("Ommitted letter = ").upper()
-    
     while not ommitted_letter in ALPHABET and len(ommitted_letter) == 1: #more input validation
         ommitted_letter = input("Ommitted letter = ").upper()
 
