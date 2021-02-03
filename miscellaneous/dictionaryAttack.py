@@ -22,7 +22,7 @@ def dict_attack(c, cipher_type, min_word_length=1, max_word_length = 1000, dicti
     if fitness is None: #if no alternate scoring method specified, use ngram-scoring from the appropriate fitness file
         fitness = lambda x: ngramScore.ngram_score(fitness_file).score(x)
 
-    with open(FULL_DICTIONARY) as wordbook:
+    with open(dictionary_file) as wordbook:
         # take out words from the dictionary that are > the minimum word length
         english_words = [word.strip().upper() for word in wordbook if len(word.strip()) >= min_word_length and
                          len(word.strip()) <= max_word_length]
