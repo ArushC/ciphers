@@ -57,6 +57,9 @@ def main():
     start_index = int(input("Start index = "))
     skip = int(input("Skip = "))
     res = encrypt_skip(message, skip, start_index) if mode.upper() == 'E' else decrypt_skip(message, skip, start_index)
+    
+    # Print with a | ("pipe" character) after it in case
+    # there are spaces at the end of the decrypted message.
     print(res +  "|")
     pyperclip.copy(res)
     print("<Copied to clipboard>")
