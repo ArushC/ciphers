@@ -58,6 +58,8 @@ def main():
     skip = int(input("Skip = "))
     res = encrypt_skip(message, skip, start_index) if mode.upper() == 'E' else decrypt_skip(message, skip, start_index)
     print(res +  "|")
+    pyperclip.copy(res)
+    print("<Copied to clipboard>")
 
 
 if __name__ == '__main__':
