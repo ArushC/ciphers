@@ -43,15 +43,14 @@ def main():
             else:
                 ciphertext = decrypt_vertical(message, key, n)
 
-        # Print the encrypted string in ciphertext to the screen, with
-        # a | ("pipe" character) after it in case there are spaces at
+        # Print with a | ("pipe" character) after it in case there are spaces at
         # the end of the encrypted message.
         print(ciphertext + '|')
 
         # Copy the encrypted string in ciphertext to the clipboard.
         pyperclip.copy(ciphertext)
         print()
-        print("Result copied to clipboard")
+        print("<Copied to clipboard>")
 
 
 def convert_to_tuple(myPermutation): #function accepts input and converts the string into a tuple
