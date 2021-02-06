@@ -102,13 +102,12 @@ def main():
     else:
         ciphertext = decrypt(message, key, offset)
 
-    # Print the encrypted string in ciphertext to the screen, with
-    # a | ("pipe" character) after it in case there are spaces at
-    # the end of the encrypted message.
+    # Print w/ a | ("pipe" character) in case there are any spaces
+    # at the end of the message
     print(ciphertext + '|')
     print()
     pyperclip.copy(ciphertext)
-    print("Result copied to clipboard")  
+     print("<Copied to clipboard>")  
 
 
 if __name__ == '__main__':
