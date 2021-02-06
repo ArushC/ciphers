@@ -31,3 +31,16 @@ def english_word_score(msg : str, filename=COMMON_WORDS, min_word_length=MIN_WOR
 def english_word_and_frequencies_score(msg : str, filename=COMMON_WORDS, min_word_length=MIN_WORD_LENGTH):
     return english_word_score(msg, filename, min_word_length)/calculate_chi_squared(msg)
 
+
+def main():
+
+    cipher = input("Enter a message: ")
+    min_word_length = int(input("Minimum word length = "))
+    print("English word score (from common English words): " +
+          str(english_word_score(cipher, min_word_length=min_word_length)))
+    print("English word and frequencies score (from common English words): %.2f"
+          %english_word_and_frequencies_score(cipher, min_word_length=min_word_length))
+
+
+if __name__ == '__main__':
+    main()
