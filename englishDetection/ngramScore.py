@@ -1,6 +1,6 @@
 '''
 Allows scoring of text using n-gram probabilities
-Found on http://practicalcryptography.com/cryptanalysis/text-characterisation/quadgrams/#a-python-implementation
+This code was modified from http://practicalcryptography.com/cryptanalysis/text-characterisation/quadgrams/#a-python-implementation
 use with english_monograms, english_bigrams, english_trigrams, english_quadgrams, or english_quintgrams
 best with english_quadgrams
 '''
