@@ -36,9 +36,15 @@ def main():
     key = int(input("Enter key: "))
     mode = input("Encrypt/Decrypt <e/d>?: ")
     if mode.upper() == 'E':
-        print(encrypt(message, key))
+        res = encrypt(message, key)
     elif mode.upper() == 'D':
-        print(decrypt(message, key))
+        res = decrypt(message, key)
+
+    # Print with a | ("pipe" character) after it in case
+    # there are spaces at the end of the decrypted message.
+    print(res + "|")
+    pyperclip.copy(res)
+    print("<Copied to clipboard>")
 
 
 if __name__ == '__main__':
