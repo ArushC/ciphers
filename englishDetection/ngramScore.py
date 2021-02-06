@@ -1,8 +1,8 @@
 '''
 Allows scoring of text using n-gram probabilities
-This code was modified from http://practicalcryptography.com/cryptanalysis/text-characterisation/quadgrams/#a-python-implementation
-use with english_monograms, english_bigrams, english_trigrams, english_quadgrams, or english_quintgrams
-best with english_quadgrams
+This code was borrowed from http://practicalcryptography.com/cryptanalysis/text-characterisation/quadgrams/#a-python-implementation
+It was originally written by James Lyons and has been modified slightly for better readability
+The english_monograms, english_bigrams, english_trigrams, english_quadgrams, and english_quintgrams txt files were also sourced from this site
 '''
 import os.path
 from math import log10
@@ -16,24 +16,26 @@ TRIGRAMS = os.path.join(MY_PATH,'../englishDetection/english_trigrams.txt')
 QUADGRAMS = os.path.join(MY_PATH,'../englishDetection/english_quadgrams.txt')
 QUINTGRAMS = os.path.join(MY_PATH,'../englishDetection/english_quintgrams.txt')
 
-
 class ngram_score(object):
 
-    def __init__(self, ngramfile ,sep=' '):
-        ''' load a file containing ngrams and counts, calculate log probabilities '''
+    def __init__(self, ngramfile, sep=' '):
+        
+        #load a file containing ngrams and counts and calculate log probabilities
         self.ngrams = {}
         for line in open(ngramfile):
             key, count = line.split(sep)
             self.ngrams[key] = int(count)
         self.L = len(key)
         self.N = sum(self.ngrams.values())
+        
         #calculate log probabilities
         for key in self.ngrams.keys():
             self.ngrams[key] = log10(float(self.ngrams[key])/self.N)
         self.floor = log10(0.01 / self.N)
 
-    def score(self,text):
-        ''' compute the score of text '''
+    def score(self, text):
+        
+        #compute the english score of the text based on the log probabilities 
         score = 0
         ngrams = self.ngrams.__getitem__
         for i in range(len(text) - self.L+1):
