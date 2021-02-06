@@ -17,16 +17,15 @@ def main():
         offset = int(input("Offset?: "))
         if mode == 'encrypt':
             result = encryptMessage(key, message, offset)
-        elif myMode == 'decrypt':
+        elif mode == 'decrypt':
             result = decryptMessage(key, message, offset)
         
-         # Print the encrypted string in ciphertext to the screen, with
-        # a | ("pipe" character) after it in case there are spaces at
-        # the end of the encrypted message.
+        # Print the encrypted string w/ a | ("pipe" character) after it in case 
+        # there are spaces at the end of the encrypted message.
         print(result + '|')
         pyperclip.copy(result)
         print()
-        print("Result copied to clipboard")
+        print("<Copied to clipboard>")
         
 
 def determineValues(key, offset): #determine starting row value and whether increasing/decreasing based on offset
