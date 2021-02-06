@@ -28,9 +28,8 @@ def main():
     # there are spaces at the end of the decrypted message.
     print(plaintext + '|')
     print()
-    print("Result copied to clipboard")
     pyperclip.copy(plaintext)
-
+    print("<Copied to clipboard>")
     
 #basic route cipher -- write horizontally read down the columns
 #the key specifies the width of the grid
