@@ -42,3 +42,14 @@ class ngram_score(object):
             score += ngrams(text[i:i + self.L]) if text[i:i + self.L] in self.ngrams else self.floor
 
         return score
+
+def main():
+    cipher = input("Enter a message: ")
+    print("Monogram score: %.2f" %ngram_score(MONOGRAMS).score(cipher))
+    print("Bigram score: %.2f" %ngram_score(BIGRAMS).score(cipher))
+    print("Trigram score: %.2f" %ngram_score(TRIGRAMS).score(cipher))
+    print("Quadgram score: %.2f" %ngram_score(QUADGRAMS).score(cipher))
+    print("Quintgram score: %.2f" %ngram_score(QUINTGRAMS).score(cipher))
+
+if __name__ == '__main__':
+    main()
