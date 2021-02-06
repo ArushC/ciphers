@@ -1,6 +1,8 @@
 import re
 
-#Note this is not my code: this is a data structure that I found out about after some Googling
+#This code was borrowed from https://gist.github.com/EricDuminil/8faabc2f3de82b24e5a371b6dc0fd1e0
+#It was originally discovered from a StackOverflow post at https://stackoverflow.com/questions/42742810/speed-up-millions-of-regex-replacements-in-python-3
+#The Trie data structure can be used to efficiently detect occurences of English words in a plaintext
 
 class Trie():
     """Regex::Trie in Python. Creates a Trie out of a list of words. The trie can be exported to a Regex pattern.
