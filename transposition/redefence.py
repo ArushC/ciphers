@@ -107,7 +107,7 @@ def main():
     print(ciphertext + '|')
     print()
     pyperclip.copy(ciphertext)
-     print("<Copied to clipboard>")  
+    print("<Copied to clipboard>")  
 
 
 if __name__ == '__main__':
