@@ -4,7 +4,7 @@ import re, copy, time
 #note: an arisocrat cipher is any substitution cipher with known word boundaries
 #this program solves arisocrats, works best when word count >= 300 AND the majority
 #of words in the ciphertext appear in the dictionary file that you are using
-#check out the slideshow based on this program at tinyurl.com/ccslides31
+#check out the slideshow based on this program at https://tinyurl.com/ccslides31
 
 ALPHABET = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
 nonletters_and_spaces = re.compile('[^A-Za-z\s]')
