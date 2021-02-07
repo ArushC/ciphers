@@ -14,7 +14,6 @@ MONOGRAMS = os.path.join(MY_PATH, '../englishDetection/english_monograms.txt')
 BIGRAMS = os.path.join(MY_PATH,'../englishDetection/english_bigrams.txt')
 TRIGRAMS = os.path.join(MY_PATH,'../englishDetection/english_trigrams.txt')
 QUADGRAMS = os.path.join(MY_PATH,'../englishDetection/english_quadgrams.txt')
-QUINTGRAMS = os.path.join(MY_PATH,'../englishDetection/english_quintgrams.txt')
 
 class ngram_score(object):
 
@@ -49,7 +48,6 @@ def main():
     print("Bigram score: %.2f" %ngram_score(BIGRAMS).score(cipher))
     print("Trigram score: %.2f" %ngram_score(TRIGRAMS).score(cipher))
     print("Quadgram score: %.2f" %ngram_score(QUADGRAMS).score(cipher))
-    print("Quintgram score: %.2f" %ngram_score(QUINTGRAMS).score(cipher))
 
 if __name__ == '__main__':
     main()
