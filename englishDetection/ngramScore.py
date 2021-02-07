@@ -1,6 +1,6 @@
 '''
 Allows scoring of text using n-gram probabilities
-This code was borrowed from http://practicalcryptography.com/cryptanalysis/text-characterisation/quadgrams/#a-python-implementation
+The ngram_score class was borrowed from http://practicalcryptography.com/cryptanalysis/text-characterisation/quadgrams/#a-python-implementation
 It was originally written by James Lyons and has been modified slightly for better readability
 The english_monograms, english_bigrams, english_trigrams, english_quadgrams, and english_quintgrams txt files were also sourced from this site
 '''
