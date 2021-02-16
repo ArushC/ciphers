@@ -6,7 +6,7 @@ def main():
     remove = input("Remove spaces? [y/n]: ")
     if remove == 'y':
         message = message.replace(" ", "")
-    crack = input("Crack code <y/n>?")
+    crack = input("Crack code <y/n>? ")
     if crack == 'y':
         lowerBound = int(input("Lower bound: "))
         higherBound = int(input("Higher bound: "))
