@@ -51,6 +51,7 @@ def invert(alphabet, default_alphabet=ALPHABET):
 
 if __name__ == '__main__':
     #note: case sensitive! message should be ALL UPPERCASE
+    print("WARNING: this program is case-sensitive. The default alphabet is the capital alphabet A-Z.")
     msg = input("Enter a message: ")
 
     custom_def_alphabet = input("Custom (default) alphabet <y/n>?: ")
