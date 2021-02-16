@@ -51,6 +51,8 @@ def main():
         pyperclip.copy(ciphertext)
         print()
         print("<Copied to clipboard>")
+        print("Warning: do not copy this manually because there is a pipe character at the end of the message that"
+          "will mess up decryption.")
 
 
 def convert_to_tuple(myPermutation): #function accepts input and converts the string into a tuple
