@@ -107,7 +107,9 @@ def main():
     print(ciphertext + '|')
     print()
     pyperclip.copy(ciphertext)
-    print("<Copied to clipboard>")  
+    print("<Copied to clipboard>")
+    print("Warning: do not copy this manually because there is a pipe character at the end of the message that"
+          "will mess up decryption.")
 
 
 if __name__ == '__main__':
