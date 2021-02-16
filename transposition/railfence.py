@@ -26,6 +26,8 @@ def main():
         pyperclip.copy(result)
         print()
         print("<Copied to clipboard>")
+        print("Warning: do not copy this manually because there is a pipe character at the end of the message that"
+          "will mess up decryption.")
         
 
 def determineValues(key, offset): #determine starting row value and whether increasing/decreasing based on offset
