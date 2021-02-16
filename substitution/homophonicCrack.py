@@ -1,7 +1,7 @@
 import re, math, random
 import numpy as np, time
 from cryptanalysis.ngramFrequencyAnalysis import get_ngrams_with_frequencies, get_distinct_ngrams
-#from englishDetection.englishScore import BIGRAM_FREQUENCIES
+from englishDetection.englishScore import BIGRAM_FREQUENCIES
 from substitution import substitutionCrack
 from substitution import substitutionCipher
 from cryptanalysis.chiSquaredTest import EXPECTED
@@ -66,7 +66,7 @@ def get_expected_bigram_frequency_matrix(msg_length, alphabet=DEFAULT_ALPHABET):
 
     res = np.zeros(shape=(len(alphabet), len(alphabet)), dtype=float)
 
-    for line in open("bigram_frequencies_real.txt"):
+    for line in open(BIGRAM_FREQUENCIES):
         bigram, frequency = line.split()
         frequency = float(frequency)
         first_letter = bigram[0]
