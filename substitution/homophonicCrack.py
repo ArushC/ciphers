@@ -2,7 +2,7 @@ import re, math, random
 import numpy as np, time
 from cryptanalysis.ngramFrequencyAnalysis import get_ngrams_with_frequencies, get_distinct_ngrams
 #from englishDetection.englishScore import BIGRAM_FREQUENCIES
-from substitution.substitutionCrack import switch
+from substitution import substitutionCrack
 from substitution import substitutionCipher
 from cryptanalysis.chiSquaredTest import EXPECTED
 
@@ -119,7 +119,7 @@ def swap(letter_index_1, letter_index_2, observed_frequency_matrix, key):
     x[:, [letter_index_1, letter_index_2]] = \
         x[:, [letter_index_2, letter_index_1]]
     #switch the corresponding letters in the alphabet
-    new_key = switch(key, letter_index_1, letter_index_2)
+    new_key = substitutionCrack.switch(key, letter_index_1, letter_index_2)
     return x, new_key
 
 #implements the series of swaps described in the middle of page 10
