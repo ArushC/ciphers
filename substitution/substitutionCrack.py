@@ -4,10 +4,11 @@ from substitution.manualSubDecoder import color
 from substitution import substitutionCipher
 from englishDetection import ngramScore
 from miscellaneous import pyperclip
-import re
+from substitution import homophonicCrack
+import re, time
 
 #decrypts a ciphertext by using a simulated annealing algorithm
-def decrypt(ciphertext, initial_alphabet=None, failures=10000, num_of_decryptions=10, fitness_file = ngramScore.QUADGRAMS):
+def decrypt(ciphertext, initial_alphabet=None, failures=1000, num_of_decryptions=10, fitness_file = ngramScore.QUADGRAMS):
 
     scores_list = []
     fitness = ngramScore.ngram_score(fitness_file)
@@ -52,6 +53,7 @@ def decrypt(ciphertext, initial_alphabet=None, failures=10000, num_of_decryption
                 break
             failure_count += 1
 
+
     print() #padding
 
     scores_list.sort(key = lambda x: x[0], reverse=True)
@@ -71,11 +73,13 @@ def print_best_solutions(scores_list):
     pyperclip.copy(scores_list[0][2])
 
 
+
 #returns list with switched elements at two distinct indexes in a list
 def switch(alph, pos1, pos2):
     return_li = list(alph)
     return_li[pos1], return_li[pos2] = return_li[pos2], return_li[pos1]
     return ''.join(return_li)
+
 
 
 def get_ordered_appearances(msg: str, letters_only=True): #returns an alphabet of letters in the message ordered
@@ -87,33 +91,22 @@ def get_ordered_appearances(msg: str, letters_only=True): #returns an alphabet o
     return ''.join(get_ngrams_with_frequencies(msg, n=1).keys()) #this dictionary has already been sorted
 
 
-def get_initial_alphabet(msg: str): #returns the initial alphabet solely based on frequencies
+def main(message, failures=1000, initial_alphabet=substitutionCipher.generate_random_alphabet()):
 
-    default_alph = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
-    english_alph = 'ETAOINSHRDLUCMWFGYPBVKJXQZ'
-    msg_alph = get_ordered_appearances(msg)
-    #add letters that don't appear in the message to the message alphabet
-    for letter in default_alph:
-        if letter not in msg_alph:
-            msg_alph += letter
-
-    return_alphabet = [''] * len(default_alph)
-
-    for i in range(len(msg_alph)):
-        return_alphabet[default_alph.find(english_alph[i])] += msg_alph[i]
-
-    return ''.join(return_alphabet)
-
-
-def main(message, failures=10000, initial_alphabet=substitutionCipher.generate_random_alphabet()):
-
+    solve_speed = input("Solve using slow algorithm or fast algorithm? <s/f>: ")
     message = message.upper()
-    print() #padding
-    print_best_solutions(decrypt(message, initial_alphabet, failures))
-    print()
-    print("#1 best solution copied to clipboard")
+    print()  # padding
+    if solve_speed.upper() == 'S':
+        print_best_solutions(decrypt(message, initial_alphabet, failures))
+        print()
+        print("#1 best solution copied to clipboard")
+    else:
+        best_key = homophonicCrack.fast_substitution_solve(message)
+        print(substitutionCipher.decrypt(message, best_key))
+        print("Encryption Key: " + best_key)
 
-    
+
 if __name__ == '__main__':
     message = input("Enter a message: ")
     main(message)
+   
