@@ -15,7 +15,7 @@ def break_general_periodic_cipher(ciphertext, period, big_limit=None, small_limi
                                   fitness_file=ngramScore.TRIGRAMS):
 
     fitness = ngramScore.ngram_score(fitness_file)
-    BIG_LIMIT = big_limit if big_limit != None else round(5000000 * period * period/len(ciphertext))
+    BIG_LIMIT = big_limit if big_limit != None else round(500000 * period * period/len(ciphertext)) #decreased BIG_LIMIT by a factor of 10
     SMALL_LIMIT = small_limit if small_limit != None else 1000
 
     ciphertext_parts = get_ciphertext_slices(ciphertext, period)
