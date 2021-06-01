@@ -119,7 +119,7 @@ def sum_of_appearances(C, n, sliding=False):
 
 
 if __name__ == '__main__':
-    inp = input("Enter a message:")
+    inp = input("Enter a message: ")
     filtered = pattern.sub('' , inp)
     case_sensitive = input("Case sensitive ('A' != 'a')? <y/n>: ")
     #input validation loop
