@@ -35,8 +35,8 @@ def decrypt(key, message, alphabet=DEFAULT_ALPHABET):
 
 
 def main():
-    
-    #PRECONDITION: message-case matches ALPHABET case (this is case-sensitive!)
+    # note: case sensitive! message should be ALL UPPERCASE
+    print("WARNING: this program is case-sensitive. The default alphabet is the capital alphabet A-Z.")
     msg = input("Enter message: ")
     custom_alphabet = input("Custom alphabet <y/n>?: ")
 
