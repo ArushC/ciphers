@@ -60,9 +60,12 @@ def dict_attack(c, cipher_type, min_word_length=1, max_word_length = 1000, dicti
         elif cipher_type == 'l':
 
             decryption_key = word
-            matrix = hillCipher.get_keyword_matrix(word, mode=mode)
-            if int(math.sqrt(len(word)) + 0.5) ** 2 == len(word) and gcd(round(np.linalg.det(matrix) % 26), 26) == 1:
-                plaintext = hillCipher.decrypt(c, matrix)
+            if int(math.sqrt(len(word)) + 0.5) ** 2 == len(word):
+                matrix = hillCipher.get_keyword_matrix(word, mode=mode)
+                if gcd(round(np.linalg.det(matrix) % 26), 26) == 1:
+                    plaintext = hillCipher.decrypt(c, matrix)
+                else:
+                    continue
             else:
                 continue
 
