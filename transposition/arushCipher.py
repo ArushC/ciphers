@@ -143,7 +143,7 @@ def main():
     copy(p)
     print("<Copied to clipboard>")
     print("Warning: do not copy this manually because there is a pipe character at the end of the message that"
-          "will mess up decryption.")
+          " will mess up decryption.")
 
 
 if __name__ == '__main__':
