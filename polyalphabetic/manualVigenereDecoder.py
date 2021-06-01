@@ -11,6 +11,8 @@ BOLD_CHAR = '‡'
 nonletters = re.compile('[^a-zA-Z]')
 ALPHABET = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
 
+#Interactive program to manually solve a Vigenere cipher
+
 #VIEW-COLUMN FUNCTIONS -------------------------------------------------------------------------------------------
 #PRECONDITION: message is [A-Z], all uppercase (no foreign characters)
 #ex. ABCDEFG, key = 3
