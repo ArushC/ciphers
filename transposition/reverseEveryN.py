@@ -1,4 +1,5 @@
 from cryptanalysis.ngramFrequencyAnalysis import break_into_ngrams, break_into_ngrams_with_remainders
+from miscellaneous import pyperclip
 
 def reverse(message): #reverses the entire message
     translated = ""
