@@ -1,6 +1,6 @@
 from substitution import caesarCipher
 import ast, re
-import transposition.swagmanCipher
+
 #this alphabet is (usually) used -- it can be changed by changing this constant
 ALPHABET = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
 
