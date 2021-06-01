@@ -1,6 +1,6 @@
 from cryptanalysis.ngramFrequencyAnalysis import break_into_ngrams_with_remainders
 from transposition.boxCipher import encrypt, decrypt
-
+from miscellaneous import pyperclip
 #n = # of characters that represent one letter
 #this is encryption in blocks
 #the blocks are equal to period * n
@@ -37,10 +37,18 @@ def main():
     period = int(input("period = "))
     mode = input("Encrypt/Decrypt (e/d)?: ")
     if mode.upper() == 'E':
-        print(nfid_encode(c, period, n))
+        res = nfid_encode(c, period, n)
     elif mode.upper() == 'D':
-        print(nfid_decode(c, period, n))
+        res = nfid_decode(c, period, n)
 
+    # Print with a | ("pipe" character) after it in case
+    # there are spaces at the end of the decrypted message.
+    print(res + "|")
+    print()
+    pyperclip.copy(res)
+    print("<Copied to clipboard>")
+    print("Warning: do not copy this manually because there is a pipe character at the end of the message that"
+          " will mess up decryption.")
 
 if __name__ == '__main__':
    main()
