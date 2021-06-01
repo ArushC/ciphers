@@ -52,7 +52,7 @@ def decrypt(ciphertext, lowerBound, upperBound, n=1, direction='H', num_of_decry
            else:
                 best_score, best_perm, best_plaintext = entries[0][0], entries[0][1], entries[0][2]
     
-print()
+    print()
     scores_list.sort(key=lambda x: x[0], reverse=True)
     return scores_list[:num_of_decryptions + 1] if len(scores_list) <= num_of_decryptions else scores_list
 
