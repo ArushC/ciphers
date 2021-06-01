@@ -5,10 +5,7 @@ import re
 
 nonletters = re.compile('[^A-Za-z]')
 
-#index of coincidence -- this version works for ALL MESSAGES
-#so if your message contains symbols or digits, they will be considered in the calculation
-#learn more at https://www.dcode.fr/index-coincidence
-#PRECONDITION: REMOVE SPACES FROM THE MESSAGE unless you want them to be considered in the ioc calculation
+#index of coincidence - learn more about this statistic at https://www.dcode.fr/index-coincidence
 def ioc(msg):
     #n=1 because ioc looks at individual letters (1-grams)
     appearances_dict = get_ngrams_with_frequencies(msg, n=1)
@@ -146,13 +143,7 @@ def lr(msg):
 
 if __name__ == '__main__':
     msg = input("Enter a message: ")
-    
-    keep_spaces = input("Remove spaces <y/n>?: ")
-    while not (keep_spaces.upper() == 'Y' or keep_spaces.upper() == 'N'):
-        keep_spaces = input("Remove spaces <y/n>?: ")
-    if keep_spaces.upper() == 'N':
-        msg = ''.join(msg.split())
-
+    msg = re.sub(nonletters, '', msg).upper()
     print("IOC: %8.3f" %(ioc(msg) * 1000))
     print("MIC: %8.3f" %(mic(msg) * 1000) if mic(msg) is float else "MIC: %8s" %mic(msg))
     print("MKA: %8.3f" %(mka(msg) * 1000) if mka(msg) is float else "MKA: %8s" %mic(msg))
