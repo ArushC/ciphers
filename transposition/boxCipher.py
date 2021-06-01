@@ -31,7 +31,7 @@ def main():
     pyperclip.copy(plaintext)
     print("<Copied to clipboard>")
     print("Warning: do not copy this manually because there is a pipe character at the end of the message that"
-          "will mess up decryption.")
+          " will mess up decryption.")
     
 #basic route cipher -- write horizontally read down the columns
 #the key specifies the width of the grid
