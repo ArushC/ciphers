@@ -32,7 +32,10 @@ def mic(msg):
         ioc_list = [ioc(ngrams[i]) for i in range(len(ngrams))]
         if len(str(ioc_list[len(ioc_list) - 1])) != period: #if last item has a remainder
             del ioc_list[len(ioc_list) - 1] #delete it
-        avg_ioc = sum(ioc_list)/len(ioc_list)
+        try:
+            avg_ioc = sum(ioc_list)/len(ioc_list)
+        except ZeroDivisionError:
+            return "N/A"
         if avg_ioc > max_ioc:
             max_ioc = avg_ioc
 
@@ -57,7 +60,10 @@ def mka(msg):
             if shifted[i] == unshifted[i]:
                 count += 1
         #calculate kappa and add to a list of kappa vales
-        kappa = count/(len(unshifted) - period)
+        try:
+            kappa = count/(len(unshifted) - period)
+        except ZeroDivisionError:
+            return "N/A"
         kappa_values.append(kappa)
 
     return max(*kappa_values)
@@ -139,7 +145,7 @@ def lr(msg):
 
 
 if __name__ == '__main__':
-    msg = input("Enter a message:")
+    msg = input("Enter a message: ")
     
     keep_spaces = input("Remove spaces <y/n>?: ")
     while not (keep_spaces.upper() == 'Y' or keep_spaces.upper() == 'N'):
@@ -148,18 +154,11 @@ if __name__ == '__main__':
         msg = ''.join(msg.split())
 
     print("IOC: %8.3f" %(ioc(msg) * 1000))
-    print("MIC: %8.3f" %(mic(msg) * 1000))
-    print("MKA: %8.3f" %(mka(msg) * 1000))
+    print("MIC: %8.3f" %(mic(msg) * 1000) if mic(msg) is float else "MIC: %8s" %mic(msg))
+    print("MKA: %8.3f" %(mka(msg) * 1000) if mka(msg) is float else "MKA: %8s" %mic(msg))
     print("DIC: %8.3f" %(dic(msg) * 10000))
     print("EDI: %8.3f" %(edi(msg) * 10000))
     print("LR:  %8.3f" %(lr(msg) * 1000))
     print("ROD: %8.3f" %(rod(msg) * 100))
     print("See https://bionsgadgets.appspot.com/gadget_forms/acarefstats.html to compare these statistics"
           " to known cipher types")
-
-
-
-
-
-
-
