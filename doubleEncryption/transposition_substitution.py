@@ -415,7 +415,7 @@ def attempt_substitution_break(scores_list, mode):
     while ask.upper() != 'N':
 
         index = input("Enter decryption number: ")
-        while not (index.isnumeric() and (int(index) > 0 and int(index) < len(scores_list))):
+        while not (index.isnumeric() and (int(index) > 0 and int(index) <= len(scores_list))):
             index = input("Please enter a valid decryption number: ")
 
         index = int(index) - 1
