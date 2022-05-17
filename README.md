@@ -1,4 +1,4 @@
-# ciphers
+# Ciphers
 
 These programs are implementations of classical ciphers in cryptology. An older version of this library was originally written for the Great Cipher Challenge 2020, a nationwide cryptology competition for students across the United States. Many more programs have been added to this open-source library in addition to the content displayed on the competition website at https://clubcryptology.wixsite.com/greatcipherchallenge/tools. 
 
