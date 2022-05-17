@@ -6,6 +6,6 @@ This library is a permanent work-in-progress! There are many ciphers that could 
 
 Programs are interactive, and almost every single program can be run individually.
 
- If you have a suggestion for a cipher that could be implemented or a creative algorithm to solve a certain type of cipher, don't hesitate to reach out! Please email arush.chhatrapati@gmail.com with your suggestions.
+ If you have a suggestion for a cipher that could be implemented or a creative algorithm to solve a certain type of cipher, fill out this anonymous form: https://tinyurl.com/cipher-suggestions. 
  
 Sidenote: the following paper on the construction and cryptanalysis of multi-ciphers references many of the programs provided here: https://eprint.iacr.org/2021/1005
